@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de las Ecuaciones de la Recta en visión artificial: Detección de Pose</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./hl.css">
+    <link rel="stylesheet" href="./game.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+        <header id="header" class="header">
+            <nav class="navbar">
+                <a href="/" class="navbar__logo">
+                    <img src="./images/unam.png" alt="">
+                </a>
+                <p> Proyecto <br>
+                    UNAM-DGAPA-PAPIME <br>
+                    PE107420
+                </p>
+                <div id="toggle"></div>
+                <div id="sidebar">
+                    <ul>
+                        <li><a href="#obj">OBJETIVO</a></li>
+                        <li><a href="#intro">INTRODUCCION</a></li>
+                        <li><a href="#def">DEFINICION DEL PROBLEMA</a></li>
+                        <li><a href="#req">REQUERIMIENTOS</a></li>
+                        <li><a href="#pro">PROCEDIMIENTO</a></li>
+                        <li><a href="#cues">CUESTIONARIO</a></li>
+                        <li><a href="#conc">REFLEXIONES Y CONCLUSIONES</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="_progress"></div>
+            <!-- hero section -->
+            <div class="hero">
+                <div class="hero__content">
+                    <h1>Aplicación de las Ecuaciones de la Recta en visión artificial: Detección de Pose</h1>
+                    <p> </p>
+                    <a href="#obj" class="button">Comenzar</a>
+                </div>
+            </div>
+            <!-- Table -->
+            <div class="tabla">
+                <div class="tabla__container">
+                    <div>
+                        <p class="topline">Asignatura relacionada</p> <br>
+                    </div>
+                    <div>
+                        <p class="text__table">Geometría Analítica</p> <br>
+                    </div>
+                    <div>
+                        <p class="topline">Semestre </p> <br>
+                    </div>
+                    <div>
+                        <p class="text__table">	Primer semestre</p><br>
+                    </div>
+                    <div>
+                        <p class="topline">Tema relacionado	</p> <br>
+                    </div>
+                    <div>
+                            <p class="text__table" style="text-align: left;"><b> Plan 1279 y Plan 2119</b> <br> <br>
+                                1. Elementos de Trigonometría y Geometría Analítica en el espacio de dos dimensiones      <br><br>
+                                1.5  La recta: definición de pendiente y de ángulo de inclinación. Ecuaciones de la recta en las formas punto pendiente,
+                                dos puntos y pendiente-ordenada al origen. Ecuación general de la recta. Cálculo del ángulo entre dos rectas.<br><br>
+                            </p> <br>         
+                    </div>
+                    <div>
+                        <p class="topline">Nombre del caso práctico	</p>  
+                    </div>
+                    <div>
+                        <p class="text__table">Aplicación de las Ecuaciones de la Recta en visión artificial: Detección de Pose</p><br>
+                    </div>
+                    <div>
+                        <br>
+                        <p class="topline"> Trabajo realizado con el apoyo del Programa UNAM-DGAPA-PAPIME PE107420	</p>
+                    </div>
+                </div>
+                <hr id="thread3" class="right">
+            </div>
+            <!-- objetivos -->
+            <div class="objetivos" id="obj">
+                <div class="objetivos__container">
+                    <div>
+                        <h1 class="objetivos__heading">Objetivo</h1>
+                    </div>
+                    <div  class="text__cont">
+                        <p>
+                            Diseñar un detector de pose utilizando un detector de Puntos Clave y conceptos de Ecuaciones de la Recta.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Introduccion -->
+            <div class="contenedor-central" id="intro">
+                <h1> Introducción</h1>
+                <div>
+                    <div class=" text__intro">
+                        <!-- <p>Redacta tu introducción contestando a las siguientes preguntas</p>
+                        <p>1. ¿Qué es un sistema de recomendación?</p>    
+                        <p>2. Menciona al menos 5 ejemplos de sistemas de recomendación presentes en tu vida cotidiana.</p>     
+                        <p>3. ¿Qué es el aprendizaje de máquinas?</p>     
+                        <p>4. ¿Qué papel juegan la probabilidad y la estadística en los sistemas de recomendación?</p>     
+                        <p>5. Explica a detalle el teorema de Bayes.</p>     
+                        <p>6. ¿Qué es un clasificador bayesiano ingenuo?</p>     
+                        <p>Esta sección deben ser mínimo 3 cuartillas con tus palabras o citando correctamente las fuentes si se requiere. Puedes usar fuentes en línea, pero no es válido hacer “copiar y pegar”.</p>      -->
+                        
+                        <p>Seguramente has utilizado tecnología que permite identificar el cuerpo humano completo, por ejemplo, en videojuegos interactivos, en la realización de efectos especiales o bien en el uso de bodytracking, pero te has preguntado; ¿cómo las computadoras son capaces de reconocer la figura humana?</p>
+                        <br>
+                        <p>El pilar de todas estas aplicaciones es la Estimación de Pose, esta tecnología esta construida por redes neuronales y permite obtener, a partir de una imagen o video, los puntos clave de un esqueleto humano digital. Es decir, estima las posiciones que ocupan cada una de las partes del cuerpo humano proyectándolas en un plano 2D o 3D.  Existen diversas herramientas que permiten operar con esta tecnología, estas dependen del área al que este enfocada. En este caso se ha utilizado OpenPose, una biblioteca de visión artificial que permite, entre otras cosas, obtener un esqueleto humano simple por medio de Puntos Clave.</p>
+                        <br>
+                        <p>Además de su uso recreativo esta tecnología tiene áreas de aplicación diversas, por ejemplo: Reconocimiento facial, Reconocimiento de gestos, Realidad aumentada. </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Definicion del problema -->
+            <div class="contenedor-central " style="background-color: #A89469;" id="def" >
+                <h1> Definición del Problema</h1>
+                <div>
+                    <div class=" text__intro" style="text-align: justify;  ">
+                        <p>Un equipo de programadores quiere desarrollar una app que sea capaz de enseñar Yoga a un usuario, entre muchas funciones, desean que la app muestre una posición de Yoga y el usuario intente hacerla. Si la posición es correcta entonces podrá continuar la lección. </p>
+                        <br>
+                        <p>¿Cómo saber si el usuario está realizando correctamente una posición? Esta es una pregunta que se resuelve de manera sencilla: comparando una pose original y la pose del usuario. Es decir, comparando los grados de inclinación de cada extremidad del cuerpo del usuario, con valores de referencia previamente asignados.</p>
+                        <br>
+                        <p>Para ello utilizaremos los conceptos básicos que has aprendido hasta el momento de programación y geometría analítica. Se te asignara el resultado de la estimación de pose para que con ella puedas operar y encontrar los ángulos correspondientes.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Requerimientos -->
+            <div class="requerimientos" id="req">
+                <div class="requerimientos__container">
+                    <div>
+                        <h1 class="requerimientos__heading">Requerimientos</h1>
+                    </div>
+                    <div class="text__cont">
+                                <p>1.- Como primer paso, necesitas instalar un IDE que te permita trabajar con lenguaje Python. Se recomienda utilizar Jupyter <a href="https://jupyter.org/try">https://jupyter.org/try </a> . En este documento, las capturas de pantalla muestran la programación realizada en Jupyter.   </p> <br>
+                                <!-- <p>2.- También necesitas una imagen en formato jpg, la cual deberá tener el nombre imagen.jpg. </p> -->
+                    </div>
+                </div>
+                <hr id="thread3" class="right">
+            </div>
+            <!-- Procedimiento -->
+            <div class="contenedor-central " style="background-color:  #fff; color: rgb(36, 36, 36);"  id="pro">
+                <h1> Procedimiento</h1>
+                <div>
+                    <div class=" text__intro" >
+                        <p>1.- En el siguiente ejemplo, utilizamos una fotografía donde una persona tiene ambos brazos levantados. Se le aplico un algoritmo de Detección de Puntos Clave (OpenPose) y se construyó el siguiente modelo.</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/poseestimation.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Puedes observar que se traza una línea verde que entrelaza varios puntos rojos, estos serán las estimaciones que el algoritmo nombra como una parte del cuerpo humano: cuello, hombro derecho, codo derecho, muñeca derecha, etc. Debido a que la tecnología es sencilla y se esta trabajando en ella, el algoritmo solo es capaz de detectar puntos clave específicos, como puedes notar, omite los dedos. </p>
+                        <!-- <p>Una vez que se obtuvieron los puntos clave, el algoritmo nos permite ver el valor de estos.</p> -->
+                        <br>
+                        <p>En la siguiente imagen puedes ver las coordenadas de 5 puntos clave, es decir 5 partes del cuerpo humano ya identificadas:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/coordenadas.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Observa que los valores en el eje Y están inversos, por lo que deberas estar atento. </p>
+                        <br>
+                        <p>2.- Ahora que conoces los resultados del modelo, escribiras un programa que calcule las pendientes de esos puntos:</p>
+                        <!-- <p>Es importante que repasemos los visto en clase.</p> -->
+                        <p>Como primer paso  deberás importar el modulo Math, este te permitirá hacer uso de las funciones matemáticas que tiene Python. </p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            import math
+                        </code_example>
+                        <br>
+                        <p>A continuación, debes declarar los puntos clave previos, haciendo uso de arreglos. Para cada Punto Clave usaras un arreglo único. De la siguiente manera:</p>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            cuello = [372 , 416]
+                            muñeca_izq = [558, 312]
+                            codo_izq = [558,416]
+                            muñeca_der = [220,291]
+                            codo_der = [169,395]
+                        </code_example>
+                        <br>
+                        <p>Puedes imprimir el contenido de los arreglos si utilizas la siguiente línea, para probar que tus arreglos están funcionando de manera correcta.</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            print("Coordenadas de: ","Cuello:", cuello, "Muñeca izquierda" , muñeca_izq, "Codo izquierdo",codo_izq, "Muñeca derecha",muñeca_der, "Codo derecho", codo_der)
+                        </code_example>
+                        <br>                        
+                        <p>Recuerda que mediante los puntos en un plano cartesiano podemos saber la localización exacta de un elemento, en este caso ¿Cómo es posible saber si una mano se encuentra levantada?, para ello debemos tomar los puntos que corresponden a las muñecas y compararlos con respecto a un punto estático. De esta manera conoceras si la posición de una muñeca con respecto a la posición del cuello es diferente.</p>
+                        <br>
+                        <p>Si una muñeca tiene un valor mayor que el del cuello en el eje Y, podemos decir que esa mano esta levantada. Por el contrario, si una muñeca tiene un valor menor que el valor del cuello en el eje Y , entonces esa mano no estará levantada.</p>
+                        <p>Una vez que tengamos los valores haremos una comparación con una estructura de control llamada en if, seguramente ya la conoces.</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            if cuello and muñeca_izq and muñeca_der and muñeca_izq[1] < cuello[1] and muñeca_der[1] < cuello[1]:
+                                print ("AMBOS BRAZOS ARRIBA!")
+                            elif cuello and muñeca_der and muñeca_der[1] < cuello[1]:
+                                print ("MANO DERECHA ARRIBA!")
+                            elif cuello and muñeca_izq and muñeca_izq[1] < cuello[1]:
+                                print("MANO IZQUIERDA ARRIBA!")
+                            else:
+                                print("AMBAS MANOS ABAJO!") 
+                        </code_example>
+                        <br>
+                        <p>En este caso el resultado es:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/resultadoif.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Excelente, ahora que conoces la posición, es momento de obtener la pendiete de cada punto. Utilizaras como puntos de referencia: el cuello, el codo derecho y la muñeca derecha.</p>
+                        <p>Como primer paso, obtendremos las coordenadas de cada punto: cuello, muñeca derecha y codo derecho:</p>
+                        <!-- <div class="contenedor_img " >
+                            <img src="./images/triangulo.png" class="imagen"   alt="Imagen-prueba">
+                        </div> -->
+                        <p>Como puedes ver en la figura, hemos formado intencionalmente un triangulo con las 3 coordenadas asignadas. Toma en cuenta que el eje Y esta inverso, se cuidadoso.</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/grafica1.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Llamaremos a los puntos de la siguiente manera: A = Muñeca Derecha, B = Cuello, C = Codo.
+                            Por lo que tenemos los siguientes segmentos 
+                        </p>
+                        <div class="contenedor_img " >
+                            <img src="./images/pendientes.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Para obtener la pendiente de cada uno de los segmentos es necesario aplicar la formula:</p>
+                        <!-- <p>FORMULA</p> -->
+                        <p class="formula">
+                            \[m = {Y_2 - Y_1 \over X_2 - X_1 }\]
+                        </p>
+                        
+                        <p>Sustituyendo en la formula obtenemos que para cada pendiente::</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            mCB = (cuello[1]-codo_der[1])/(cuello[0]-codo_der[0])
+                            mCA = (muñeca_der[1]-codo_der[1])/(muñeca_der[0]-codo_der[0])
+                            mBA = (muñeca_der[1]-cuello[1])/(muñeca_der[0]-cuello[0])
+                            
+                        </code_example>
+                        <br>
+                        <p>Ahora debes imprimir los resultados con la siguiente línea</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            print("mCB: ",mCB)
+                            print("mCA: ",mCA)
+                            print("mBA: ",mBA)
+                        </code_example>
+                        <br>
+                        <p> El resultado de las cada pendiente será:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/resultado-pendientes.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Una vez que tenemos las pendientes de los tres puntos es necesario calcular los ángulos correspondientes a cada punto. Para ello repasaremos lo visto en clase</p>
+                        <p>Recordemos que para obtener el ángulo en cada uno de los puntos es necesario aplicar la formula:</p>
+                        <!-- <p>FORMULA</p> -->
+                        <p class="formula">
+                            \[ \theta = tan^{-1}  { \left( m_2*m_1 \over 1 + m_2*m_1 \right) }\]
+                        </p>
+                        <!-- <p>Donde: </p> -->
+                        
+                        <p>Ahora sustituye los valores de cada una de las pendientes en la formula:</p>
+                        <p>Nota: Es importante saber que el valor del resultado estará en radianes, es por ello que es necesario realizar una conversión a grados utilizando una variable auxiliar para guardar el nuevo resultado.</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            anguloA = (mCA-mBA)/(1+(mCA*mBA))
+                            anguloRA = math.atan(anguloA)
+                            anguloGA= math.degrees(anguloRA)
+                        </code_example>
+                        <br>
+                        <p> El angulo en radianes se obtiene despues de aplicar la funcion <span>math.atan</span>, es decir arcotangente. Recuerda que este valor se encuentra en radianes, por lo que se utliza la función <span>math.degrees</span> para convertir el valor a Grados. </p>
+                        <p>Ahora es necesario imprimir el resultado del ángulo A con la siguiente línea:</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            print("Angulo A", "%.2f"% anguloGA , "°")
+                        </code_example>
+                        <br>
+                        <p>Obteniendo como resultado:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/anguloA.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Para el ángulo B, sustituye las variables:</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            anguloB = (mBA-mCB)/(1+(mBA*mCB))
+                            anguloRB= math.atan(anguloB)
+                            anguloGB= math.degrees(anguloRB)
+                        </code_example>
+                        <br>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            print("Angulo B", "%.2f"% anguloGB, "°")
+                        </code_example>
+                        <br>
+                        <p>Obteniendo como resultado:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/anguloB.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p>Y por ultimo el ángulo C</p>
+                        <p>Como nota extra, si el ángulo del punto C es mayor a los 90 grados, nuestro algoritmo arrojara un resultado negativo, pero podemos solucionar este pequeño inconveniente si sumamos al ángulo resultante 180 grados de esta manera:</p>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            anguloC = (mCB-mCA)/(1+(mCB*mCA))
+                            anguloRC = math.atan(anguloC)
+                            anguloGC= math.degrees(anguloRC)
+                            if (anguloGC < 0):
+                                anguloGC = anguloGC + 180
+                        </code_example>
+                        <br>
+                        <br>
+                        <code_example title="CÓDIGO FUENTE" lang="py">
+                            print("Angulo C", "%.2f"% anguloGC , "°")
+                        </code_example>
+                        <br>
+                        <p>Obteniendo como resultado:</p>
+                        <div class="contenedor_img " >
+                            <img src="./images/anguloC.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p> Puedes ver el resultado de manera gráfica a continuación: </p>
+                        <div class="contenedor_img " >
+                            <img src="./images/angulosfinal.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <div class="contenedor_img " >
+                            <img src="./images/resultadofinal.png" class="imagen"   alt="Imagen-prueba">
+                        </div>
+                        <p></p>
+
+                        
+                    
+                    
+                    
+                    </div>
+                </div>
+                <hr id="thread3" class="right">
+            </div>
+            <!-- cuestionario -->
+            <div>
+                <div class="title__cuestion" id="cues">
+                    <h1>Cuestionario</h1>
+                </div>
+                <div class="container3" id="divi">
+                    <div id="game" class="games"> 
+                        <div id="hud">
+                            <div class="hud-item">
+                                <p id="progressText" class="hud-prefix">
+                                    Pregunta
+                                </p>
+                                <div id="progressBar">
+                                    <div id="progressBarFull"></div>
+                                </div>
+                            </div>
+                            <div class="hud-item">
+                                <p class="hud-prefix">
+                                    Puntos
+                                </p>
+                                <h1 class="hud-main-text" id="score">
+                                    0
+                                </h1>
+                            </div>
+                        </div>
+                        <h1 id="question">pregunta</h1>
+                        <div class="choice-container">
+                            <p class="choice-prefix">A</p>
+                            <p class="choice-text" data-number="1">respuesta</p>
+                        </div>
+                        <div class="choice-container">
+                            <p class="choice-prefix">B</p>
+                            <p class="choice-text" data-number="2">respuesta 2</p>
+                        </div>
+                        <div class="choice-container">
+                            <p class="choice-prefix">C</p>
+                            <p class="choice-text" data-number="3">respuesta 3</p>
+                        </div>
+                        <div class="choice-container">
+                            <p class="choice-prefix">D</p>
+                            <p class="choice-text" data-number="4">respuesta 4</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="end" class="flex-center flex-column puntuacion">
+                    <form class="end-form-container" id="ending">
+                        <div class="title__cuestion">
+                            <h2>Obtuviste la siguiente puntuación:</h2>
+                        </div>
+                        <h2 id="end-text"> </h2>
+                        <h1 id="finalScore">0 </h1>
+                        <a href="#newtry" onclick="location.reload()" class="btn">Intentar de nuevo</a>
+                    </form>
+                </div>
+            </div>
+            <!-- conclusiones -->
+            <div class="conclusiones" id="conc">
+                <div class="conclusiones__container">
+                    <div>
+                        <h1 class="conclusiones__heading">Reflexiones y conclusiones</h1>
+                    </div>
+                    <div  class="text__cont">
+                            <p>Responde:</p>
+                            <!-- <p>1.	¿Cómo podrías medir la utilidad de las predicciones de tu sistema de recomendación?</p> <br>
+                            <p>2.	¿Se podría omitir la fase de categorización y trabajar con distribuciones continuas? ¿Cuáles serían las ventajas y desventajas?</p> <br>
+                            <p>3.	¿Crees que el resultado mejoraría si utilizamos una categorización más fina en ambas variables? Por ejemplo, definir cinco categorías de edades y cinco de temperatura.</p> <br>
+                            <p>4.	Observa detenidamente los ejemplos que acompañan el último paso del procedimiento. ¿Qué pasaría si se omitiera en los cálculos la división entre el valor de la evidencia 𝑃(𝑋∩𝑌)? ¿Afectaría a la predicción resultante? ¿Por qué?</p> <br> -->
+                    </div>
+                </div>
+            </div>
+       
+        <!-- footer -->
+        <div class="footer">
+            <div class="footer__wrapper">
+                <div class="footer__desc">
+                    <img src="./images/unam.png" alt="">
+                </div>
+                <div class="footer__links">
+                    <h2 class="footer__title">Encargado del proyecto y diseño de casos </h2>
+                    <a href="" class="footer__link"> Dr. Arturo Rodriguez Garcia</a>
+                </div>
+            </div>
+            <div class="footer__wrapper">
+                <div class="footer__links">
+                    <h2 class="footer__title">Diseño de casos y diseño de la pagina web</h2>
+                    <a href="" class="footer__link"> Jesús Enrique Chimal Mosso</a>
+                </div>
+                <div class="footer__links">
+                    <h2 class="footer__title">Diseño de la pagina web </h2>
+                    <a href="" class="footer__link"> Gonzalo Chávez Onofre </a>
+                </div>
+            </div>
+        </div>
+    <script src="./app.js"></script>
+    <script src="./hl.js"></script>
+    <script src="./game.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <!-- <link href="https://browser-tools.lazydb.com/code_example/code_example.css" rel="stylesheet"> -->
+    <!-- <script src="https://browser-tools.lazydb.com/code_example/code_example.js"></script> -->
+</body>
+</html>
