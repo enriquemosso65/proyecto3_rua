@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./hl.css">
     <link rel="stylesheet" href="./game.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
-    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/><link rel="stylesheet" href="./style.css">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
 </head>
 <body>
         <header id="header" class="header">
@@ -101,15 +101,6 @@
                 <h1> Introducción</h1>
                 <div>
                     <div class=" text__intro">
-                        <!-- <p>Redacta tu introducción contestando a las siguientes preguntas</p>
-                        <p>1. ¿Qué es un sistema de recomendación?</p>    
-                        <p>2. Menciona al menos 5 ejemplos de sistemas de recomendación presentes en tu vida cotidiana.</p>     
-                        <p>3. ¿Qué es el aprendizaje de máquinas?</p>     
-                        <p>4. ¿Qué papel juegan la probabilidad y la estadística en los sistemas de recomendación?</p>     
-                        <p>5. Explica a detalle el teorema de Bayes.</p>     
-                        <p>6. ¿Qué es un clasificador bayesiano ingenuo?</p>     
-                        <p>Esta sección deben ser mínimo 3 cuartillas con tus palabras o citando correctamente las fuentes si se requiere. Puedes usar fuentes en línea, pero no es válido hacer “copiar y pegar”.</p>      -->
-                        
                         <p>Seguramente has utilizado tecnología que permite identificar el cuerpo humano completo, por ejemplo, en videojuegos interactivos, en la realización de efectos especiales o bien en el uso de bodytracking, pero te has preguntado; ¿cómo las computadoras son capaces de reconocer la figura humana?</p>
                         <br>
                         <p>El pilar de todas estas aplicaciones es la Estimación de Pose, esta tecnología esta construida por redes neuronales y permite obtener, a partir de una imagen o video, los puntos clave de un esqueleto humano digital. Es decir, estima las posiciones que ocupan cada una de las partes del cuerpo humano proyectándolas en un plano 2D o 3D.  Existen diversas herramientas que permiten operar con esta tecnología, estas dependen del área al que este enfocada. En este caso se ha utilizado OpenPose, una biblioteca de visión artificial que permite, entre otras cosas, obtener un esqueleto humano simple por medio de Puntos Clave.</p>
@@ -139,7 +130,6 @@
                     </div>
                     <div class="text__cont">
                                 <p>1.- Como primer paso, necesitas instalar un IDE que te permita trabajar con lenguaje Python. Se recomienda utilizar Jupyter <a href="https://jupyter.org/try">https://jupyter.org/try </a> . En este documento, las capturas de pantalla muestran la programación realizada en Jupyter.   </p> <br>
-                                <!-- <p>2.- También necesitas una imagen en formato jpg, la cual deberá tener el nombre imagen.jpg. </p> -->
                     </div>
                 </div>
                 <hr id="thread3" class="right">
@@ -153,8 +143,8 @@
                         <div class="contenedor_img " >
                             <img src="./images/poseestimation.png" class="imagen"   alt="Imagen-prueba">
                         </div>
+                        <p class="img_descripcion"> <strong> Fig. 2.1.1</strong>  Detección de puntos clave</p>
                         <p>Puedes observar que se traza una línea verde que entrelaza varios puntos rojos, estos serán las estimaciones que el algoritmo nombra como una parte del cuerpo humano: cuello, hombro derecho, codo derecho, muñeca derecha, etc. Debido a que la tecnología es sencilla y se esta trabajando en ella, el algoritmo solo es capaz de detectar puntos clave específicos, como puedes notar, omite los dedos. </p>
-                        <!-- <p>Una vez que se obtuvieron los puntos clave, el algoritmo nos permite ver el valor de estos.</p> -->
                         <br>
                         <p>En la siguiente imagen puedes ver las coordenadas de 5 puntos clave, es decir 5 partes del cuerpo humano ya identificadas:</p>
                         <div class="contenedor_img " >
@@ -163,7 +153,6 @@
                         <p>Observa que los valores en el eje Y están inversos, por lo que deberas estar atento. </p>
                         <br>
                         <p>2.- Ahora que conoces los resultados del modelo, escribiras un programa que calcule las pendientes de esos puntos:</p>
-                        <!-- <p>Es importante que repasemos los visto en clase.</p> -->
                         <p>Como primer paso  deberás importar el modulo Math, este te permitirá hacer uso de las funciones matemáticas que tiene Python. </p>
                         <br>
                         <code_example title="CÓDIGO FUENTE" lang="py">
@@ -207,19 +196,18 @@
                         </div>
                         <p>Excelente, ahora que conoces la posición, es momento de obtener la pendiete de cada punto. Utilizaras como puntos de referencia: el cuello, el codo derecho y la muñeca derecha.</p>
                         <p>Como primer paso, obtendremos las coordenadas de cada punto: cuello, muñeca derecha y codo derecho:</p>
-                        <!-- <div class="contenedor_img " >
-                            <img src="./images/triangulo.png" class="imagen"   alt="Imagen-prueba">
-                        </div> -->
                         <p>Como puedes ver en la figura, hemos formado intencionalmente un triangulo con las 3 coordenadas asignadas. Toma en cuenta que el eje Y esta inverso, se cuidadoso.</p>
                         <div class="contenedor_img " >
                             <img src="./images/grafica1.png" class="imagen"   alt="Imagen-prueba">
                         </div>
+                        <p class="img_descripcion"> <strong> Fig. 2.1.2  </strong>  Coordenadas en el plano cartesiano</p>
                         <p>Llamaremos a los puntos de la siguiente manera: A = Muñeca Derecha, B = Cuello, C = Codo.
                             Por lo que tenemos los siguientes segmentos 
                         </p>
                         <div class="contenedor_img " >
                             <img src="./images/pendientes.png" class="imagen"   alt="Imagen-prueba">
                         </div>
+                        <p class="img_descripcion"> <strong> Fig. 2.1.3</strong> Triangulo formado por las coordenadas </p>
                         <p>Para obtener la pendiente de cada uno de los segmentos es necesario aplicar la formula:</p>
                         <!-- <p>FORMULA</p> -->
                         <p class="formula">
@@ -253,8 +241,6 @@
                         <p class="formula">
                             \[ \theta = tan^{-1}  { \left( m_2*m_1 \over 1 + m_2*m_1 \right) }\]
                         </p>
-                        <!-- <p>Donde: </p> -->
-                        
                         <p>Ahora sustituye los valores de cada una de las pendientes en la formula:</p>
                         <p>Nota: Es importante saber que el valor del resultado estará en radianes, es por ello que es necesario realizar una conversión a grados utilizando una variable auxiliar para guardar el nuevo resultado.</p>
                         <br>
@@ -264,7 +250,7 @@
                             anguloGA= math.degrees(anguloRA)
                         </code_example>
                         <br>
-                        <p> El angulo en radianes se obtiene despues de aplicar la funcion <span>math.atan</span>, es decir arcotangente. Recuerda que este valor se encuentra en radianes, por lo que se utliza la función <span>math.degrees</span> para convertir el valor a Grados. </p>
+                        <p> El ángulo en radianes se obtiene después de aplicar la función <span>math.atan</span>, es decir arcotangente. Recuerda que este valor se encuentra en radianes, por lo que se utliza la función <span>math.degrees</span> para convertir el valor a Grados. </p>
                         <p>Ahora es necesario imprimir el resultado del ángulo A con la siguiente línea:</p>
                         <br>
                         <code_example title="CÓDIGO FUENTE" lang="py">
@@ -316,15 +302,11 @@
                         <div class="contenedor_img " >
                             <img src="./images/angulosfinal.png" class="imagen"   alt="Imagen-prueba">
                         </div>
+                        <p class="img_descripcion"> <strong> Fig. 2.1.4</strong>  Valores angulares  </p>
                         <div class="contenedor_img " >
                             <img src="./images/resultadofinal.png" class="imagen"   alt="Imagen-prueba">
                         </div>
-                        <p></p>
-
-                        
-                    
-                    
-                    
+                        <p class="img_descripcion"> <strong> Fig. 2.1.5</strong>  Resultado final   </p>
                     </div>
                 </div>
                 <hr id="thread3" class="right">
@@ -391,12 +373,6 @@
                         <h1 class="conclusiones__heading">Reflexiones y conclusiones</h1>
                     </div>
                     <div  class="text__cont">
-                            <!-- <p>Responde:</p> -->
-                            <!-- <p>1.	¿Cómo podrías medir la utilidad de las predicciones de tu sistema de recomendación?</p> <br>
-                            <p>2.	¿Se podría omitir la fase de categorización y trabajar con distribuciones continuas? ¿Cuáles serían las ventajas y desventajas?</p> <br>
-                            <p>3.	¿Crees que el resultado mejoraría si utilizamos una categorización más fina en ambas variables? Por ejemplo, definir cinco categorías de edades y cinco de temperatura.</p> <br>
-                            
-                            <p>4.	Observa detenidamente los ejemplos que acompañan el último paso del procedimiento. ¿Qué pasaría si se omitiera en los cálculos la división entre el valor de la evidencia 𝑃(𝑋∩𝑌)? ¿Afectaría a la predicción resultante? ¿Por qué?</p> <br> -->
                             <p>Continúa escribiendo el código, esta vez, para obtener los ángulos que forman los puntos clave del Cuello, Codo Izquierdo y Muñeca Izquierda. </p>
                             <br>
                             <p>Ahora que ya obtuviste los ángulos de una posición sencilla, intenta escribir un código que permita comparar los ángulos con un rango estimado de valores posibles. </p>
@@ -405,7 +381,6 @@
                     </div>
                 </div>
             </div>
-       
         <!-- footer -->
         <div class="footer">
             <div class="footer__wrapper">
